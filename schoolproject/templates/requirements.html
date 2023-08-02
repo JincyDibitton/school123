@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- PAGE TITLE
+    ================================================== -->
+    <header class="py-8 py-md-11" style="background-image: none;">
+        <div class="container text-center py-xl-2">
+            <h1 class="display-4 fw-semi-bold mb-0">Requirements Form</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-scroll justify-content-center">
+                    <li class="breadcrumb-item">
+                        <a class="text-gray-800" href="#">
+                            Home
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item text-gray-800 active" aria-current="page">
+                        Requirements
+                    </li>
+                </ol>
+            </nav>
+        </div>
+
+    </header>
+
+
+    <!-- REQUIREMENT
+    ================================================== -->
+    <div class="container mb-11" >
+        <div class="row gx-0 ">
+            <div class="col-md-7 col-xl-4 mx-auto">
+                <!-- Login -->
+                <h3 class="mb-6">Requirement Form!</h3>
+
+                <!-- Form Login -->
+                
+                <form class="mb-5" method="post" id="studentForm" data-courses-url="{% url 'schoolapp:load_courses' %}">
+                    {% csrf_token %}
+                        {{ form.as_p }}
+                            
+                            <button type="submit" class="btn btn-primary">Submit<a href="{% url 'schoolapp:confirm' %}"></a></button>
+                          
+                </form>
+                {% if  request.user.is_authenticated %}
+               <br>
+                <button type="submit" ><a href="{% url 'schoolapp:logout' %}">Log Out</a></button>
+                    
+              {% endif %}
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    
+    <script>
+        $("#id_department").change(function () {
+            const url = $("#studentForm").attr("data-courses-url");  
+            const departmentId = $(this).val();  
+    
+            $.ajax({                       
+                url: url,                   
+                data: {
+                    'department_id': departmentId       
+                },
+                success: function (data) {
+                    console.log(data)   
+                    $("#id_courses").html(data);  
+                    
+                }
+            });
+    
+        });
+    </script>
+
+{% endblock %}

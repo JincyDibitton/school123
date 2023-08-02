@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<!-- PAGE TITLE
+    ================================================== -->
+    <header class="py-8 py-md-11" style="background-image: none;">
+        <div class="container text-center py-xl-2">
+            <h1 class="display-4 fw-semi-bold mb-0">Register</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-scroll justify-content-center">
+                    <li class="breadcrumb-item">
+                        <a class="text-gray-800" href="#">
+                            Home
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item text-gray-800 active" aria-current="page">
+                        Register
+                    </li>
+                </ol>
+            </nav>
+        </div>
+<!--        &lt;!&ndash; Img &ndash;&gt;-->
+<!--        <img class="d-none img-fluid" src="...html" alt="...">-->
+    </header>
+<!-- REGISTER
+    ================================================== -->
+    <div class="container mb-11">
+        <div class="row gx-0">
+            <div class="col-md-7 col-xl-4 mx-auto">
+                <!-- Register -->
+                
+                <!-- Form Register -->
+                <form method="POST" autocomplete="off">
+                    {% csrf_token %}
+                        <!-- Username -->
+                        {{form.as_p}}
+                        <!-- Submit -->
+                        <input type="submit" class="btn btn-success btn-lg"  value="Register"/>
+    
+                </form>
+                
+                <!-- Text -->
+                <p class="mb-0 font-size-sm text-center">
+                    Already have an account? <a class="text-underline" href="{% url 'schoolapp:login' %}">Log In</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %} 

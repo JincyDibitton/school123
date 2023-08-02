@@ -1,0 +1,36 @@
+{% load static %}
+<!-- Fixed navbar -->
+	<div class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<!-- Button for smallest screens -->
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+				<a class="navbar-brand" href="index.html">
+					<img src="{% static 'assets/images/logo.png' %}" alt="Techro HTML5 template"></a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav pull-right mainNav">
+					<li class="active"><a href="">Home</a></li>
+					<li class="dropdown">
+						<a href="schoolapp/department" class="dropdown-toggle" data-toggle="dropdown">Departments <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+                            <li><a href="https://en.wikipedia.org/wiki/Computer_science_education">Computer Science</a></li>
+							<li><a href="https://en.wikipedia.org/wiki/Bachelor_of_Commerce">Commerce</a></li>
+							<li><a href="https://en.wikipedia.org/wiki/Earth,_Planets_and_Space">Earth and Space Sciences</a></li>
+                            <li><a href="https://en.wikipedia.org/wiki/Biochemistry">Chemistry and Biochemistry</a></li>
+                            <li><a href="https://en.wikipedia.org/wiki/University_Degree_Program">University Studies Program</a></li>
+						</ul>
+					</li>
+					<li><a href="{% url 'schoolapp:register' %}">Register</a></li>
+					<li><a href="{% url 'schoolapp:login' %}">Login</a></li>
+					
+                    
+					<li><a href="courses.html">Courses</a></li>
+
+
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+	<!-- /.navbar -->
